@@ -1,0 +1,35 @@
+%h1 Listing posts
+
+%table.table.is-striped
+  %thead
+    %tr
+      %th Title
+      %th Image url
+      %th Description
+      %th Content
+      %th Author
+      %th Categories
+      %th
+      %th
+      %th
+
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td= post.title
+        %td= post.image_url
+        %td= post.description
+        %td= post.content
+        %td= post.author
+        %td
+          %table.table.is-bordered
+            -post.types.each do |type|
+              %tr=type.name
+                
+        %td= link_to 'Show', post
+        %td= link_to 'Edit', edit_post_path(post)
+        %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Post', new_post_path
