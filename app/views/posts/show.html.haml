@@ -15,6 +15,10 @@
 %p
   %b Author:
   = @post.author
+%p
+  %b Categories:
+  -@post.types.each do |t|
+    =t.name
 
 = link_to 'Edit', edit_post_path(@post)
 \|

@@ -6,7 +6,7 @@
       %th Title
       %th Image url
       %th Description
-      %th Content
+      / %th Content
       %th Author
       %th Categories
       %th
@@ -19,7 +19,7 @@
         %td= post.title
         %td= post.image_url
         %td= post.description
-        %td= post.content
+        / %td= post.content
         %td= post.author
         %td
           %table.table.is-bordered
@@ -31,5 +31,5 @@
         %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
-
+= link_to 'Sign out', destroy_admin_session_path, :method => :delete
 = link_to 'New Post', new_post_path

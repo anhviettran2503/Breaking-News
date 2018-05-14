@@ -21,7 +21,6 @@
   =fields_for @post_type do |pt|
     .field
       = collection_select(:types, :id, @all_types, :id, :name, {}, {:multiple => true})
-
   .field
     = f.label :author
     = f.text_field :author

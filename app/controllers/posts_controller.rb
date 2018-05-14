@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -21,6 +22,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @post = Post.find(params[:id])
+    @all_types=Type.all
+    @post_type=@post.posttypes.build
   end
 
   # POST /posts
@@ -60,6 +64,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
